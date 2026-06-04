@@ -22,8 +22,8 @@ export default function Founder() {
           >
             <div className="founder-glow"></div>
             <div className="founder-photo-card">
-              <div className="avatar-fallback flex items-center justify-center p-4">
-                <img src="/logo.jpg" alt="Start Smart Logo" className="w-full h-full object-contain rounded-xl" />
+              <div className="avatar-fallback">
+                <img src="/founder.jpg" alt="Shriram HR - Founder, Start Smart by SE" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', borderRadius: '20px', display: 'block' }} />
               </div>
               <div className="founder-badge">FOUNDER</div>
             </div>
