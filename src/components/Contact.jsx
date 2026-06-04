@@ -57,7 +57,7 @@ export default function Contact() {
               Ready to build <span className="text-gradient-serif">something legendary?</span>
             </h2>
             <p className="contact-lead-text">
-              Skip the trial and error. Book a complimentary 20-minute strategic consultation with Sophia Edwards to dissect your current bottleneck.
+              Skip the trial and error. Book a complimentary 20-minute strategic consultation with Shriram HR to dissect your current bottleneck.
             </p>
 
             <div className="contact-details-box">
@@ -241,7 +241,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <h4>Request Received!</h4>
-                  <p>Your strategic assessment is being analyzed. Sophia Edwards will reach out within 24 hours to schedule your strategy brief.</p>
+                  <p>Your strategic assessment is being analyzed. Shriram HR will reach out within 24 hours to schedule your strategy brief.</p>
                 </motion.div>
               )}
             </AnimatePresence>

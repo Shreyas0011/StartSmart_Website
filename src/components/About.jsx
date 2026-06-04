@@ -27,7 +27,7 @@ const pillars = [
       </svg>
     ),
     bgClass: 'blue-bg',
-    accentColor: '#D49B85',
+    accentColor: 'var(--accent-blue)',
     title: 'Our Mission',
     tagline: 'Why we exist',
     desc: 'To make strategic marketing and practical technology accessible to every founder — enabling small and local brands to compete and resonate globally while growing with integrity.',
@@ -40,7 +40,7 @@ const pillars = [
       </svg>
     ),
     bgClass: 'purple-bg',
-    accentColor: '#C39BD3',
+    accentColor: 'var(--accent-violet)',
     title: 'Our Vision',
     tagline: 'Where we\'re headed',
     desc: 'A world where every authentic business — regardless of size — has the tools, strategy, and support to grow sustainably, create social impact, and build enduring customer relationships.',
@@ -53,7 +53,7 @@ const pillars = [
       </svg>
     ),
     bgClass: 'emerald-bg',
-    accentColor: '#ECC8B8',
+    accentColor: 'var(--accent-emerald)',
     title: 'Our Philosophy',
     tagline: 'How we operate',
     desc: 'Growth should be organic, ethical, and founder-led. Instead of chasing vanity metrics, we focus on resonance — aligning marketing with what founders and their customers truly value.',
@@ -61,18 +61,18 @@ const pillars = [
 ];
 
 const creativeApproach = [
-  { step: '01', title: 'Founder-First Discovery', desc: 'We start by understanding the founder\'s intent, values, and long-term goals before touching tactics.' },
-  { step: '02', title: 'Narrative-Led Strategy', desc: 'Brand stories and content that reflect authentic purpose and speak to the right audiences.' },
-  { step: '03', title: 'Automation with Empathy', desc: 'Deploy automation to simplify operations and scale outreach without losing human touch.' },
-  { step: '04', title: 'Measurement for Growth', desc: 'Every initiative tied to clear KPIs — retention, engagement, conversions, and social impact metrics.' },
-  { step: '05', title: 'Iterative Collaboration', desc: 'We co-create with clients, iterate fast on learnings, and keep founders involved at every stage.' },
+  { step: '01', title: 'Founder-First Discovery', desc: 'We start by understanding the founder\'s intent, values, and long-term goals before touching tactics.', accentColor: 'var(--accent-amber)' },
+  { step: '02', title: 'Narrative-Led Strategy', desc: 'Brand stories and content that reflect authentic purpose and speak to the right audiences.', accentColor: 'var(--accent-blue)' },
+  { step: '03', title: 'Automation with Empathy', desc: 'Deploy automation to simplify operations and scale outreach without losing human touch.', accentColor: 'var(--accent-violet)' },
+  { step: '04', title: 'Measurement for Growth', desc: 'Every initiative tied to clear KPIs — retention, engagement, conversions, and social impact metrics.', accentColor: 'var(--accent-emerald)' },
+  { step: '05', title: 'Iterative Collaboration', desc: 'We co-create with clients, iterate fast on learnings, and keep founders involved at every stage.', accentColor: 'var(--accent-copper)' },
 ];
 
 export default function About() {
   const [hoveredPillar, setHoveredPillar] = useState(null);
 
   return (
-    <section id="about-us" style={{ position: 'relative', overflow: 'hidden' }}>
+    <section id="about-us" className="light-section" style={{ position: 'relative', overflow: 'hidden' }}>
       <div className="section-container">
 
         {/* ── Section header ─────────────────────────── */}
@@ -117,10 +117,13 @@ export default function About() {
               style={{
                 padding: '40px',
                 border: hoveredPillar === pillar.id
-                  ? `1px solid rgba(var(--accent-violet-rgb),0.45)`
+                  ? `1px solid ${pillar.accentColor}`
                   : 'var(--glass-border)',
                 transition: 'border-color 0.3s ease',
                 cursor: 'default',
+                '--glow-color': `color-mix(in srgb, ${pillar.accentColor} 15%, transparent)`,
+                '--glow-border': pillar.accentColor,
+                '--glow-shadow': `color-mix(in srgb, ${pillar.accentColor} 8%, transparent)`,
               }}
             >
               <div className="card-glow" />
@@ -137,8 +140,8 @@ export default function About() {
                 <span style={{
                   fontSize: '0.68rem', fontWeight: 700, textTransform: 'uppercase',
                   letterSpacing: '0.1em', color: pillar.accentColor,
-                  background: `rgba(var(--accent-violet-rgb),0.08)`,
-                  border: `1px solid rgba(var(--accent-violet-rgb),0.2)`,
+                  background: `color-mix(in srgb, ${pillar.accentColor} 12%, transparent)`,
+                  border: `1px solid color-mix(in srgb, ${pillar.accentColor} 25%, transparent)`,
                   padding: '3px 10px', borderRadius: '99px',
                 }}>
                   {pillar.tagline}
@@ -186,40 +189,66 @@ export default function About() {
                 variants={cardVariants}
                 className="glass-card"
                 onMouseMove={handleMouseMove}
-                whileHover={{ x: 8, borderColor: 'rgba(var(--accent-violet-rgb),0.45)' }}
+                whileHover={{ x: 8, borderColor: step.accentColor }}
                 style={{
-                  padding: '28px 36px',
+                  padding: '32px 40px',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '32px',
+                  gap: '24px',
+                  position: 'relative',
+                  overflow: 'hidden',
                   transition: 'border-color 0.3s ease',
+                  '--glow-color': `color-mix(in srgb, ${step.accentColor} 15%, transparent)`,
+                  '--glow-border': step.accentColor,
+                  '--glow-shadow': `color-mix(in srgb, ${step.accentColor} 8%, transparent)`
                 }}
               >
                 <div className="card-glow" />
-                {/* Step number */}
+                
+                {/* Large watermark-like background step number */}
                 <span style={{
-                  fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: 900,
-                  color: 'rgba(var(--accent-violet-rgb),0.3)', minWidth: '48px', letterSpacing: '-0.04em',
+                  position: 'absolute',
+                  right: '20px',
+                  bottom: '-25px',
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '7.5rem',
+                  fontWeight: 900,
+                  color: `color-mix(in srgb, ${step.accentColor} 7%, transparent)`,
+                  userSelect: 'none',
+                  pointerEvents: 'none',
                   lineHeight: 1,
+                  zIndex: 0,
+                  letterSpacing: '-0.06em',
                 }}>
                   {step.step}
                 </span>
-                {/* Divider */}
-                <div style={{ width: '1px', height: '40px', background: 'rgba(var(--accent-violet-rgb), 0.15)', flexShrink: 0 }} />
+
+                {/* Left accent dot indicator */}
+                <span style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: step.accentColor,
+                  boxShadow: `0 0 12px ${step.accentColor}`,
+                  flexShrink: 0,
+                  zIndex: 1,
+                }} />
+
                 {/* Content */}
-                <div style={{ flex: 1 }}>
-                  <h4 style={{ color: 'var(--accent-violet)', fontSize: '1.05rem', fontWeight: 700, marginBottom: '6px' }}>
+                <div style={{ flex: 1, zIndex: 1, paddingRight: '40px' }}>
+                  <h4 style={{ color: step.accentColor, fontSize: '1.15rem', fontWeight: 700, marginBottom: '6px' }}>
                     {step.title}
                   </h4>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.94rem', lineHeight: 1.6, margin: 0 }}>
                     {step.desc}
                   </p>
                 </div>
+
                 {/* Arrow */}
                 <svg
                   width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="rgba(var(--accent-violet-rgb),0.4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                  style={{ flexShrink: 0 }}
+                  stroke={`color-mix(in srgb, ${step.accentColor} 70%, transparent)`} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                  style={{ flexShrink: 0, zIndex: 1 }}
                 >
                   <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                 </svg>

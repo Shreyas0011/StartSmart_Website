@@ -61,9 +61,9 @@ export default function App() {
       const href = target.getAttribute('href');
       // Ignore hash routes (like #/founder) and only process in-page anchors
       if (href && href.startsWith('#') && !href.startsWith('#/') && href.length > 1) {
-        e.preventDefault();
         const element = document.querySelector(href);
         if (element) {
+          e.preventDefault();
           lenis.scrollTo(element, {
             offset: -100, // Account for fixed glass header
             duration: 1.2,

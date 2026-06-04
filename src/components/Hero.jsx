@@ -1,36 +1,19 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-const stats = [
-  { value: '50+', label: 'Brands Scaled' },
-  { value: '3x', label: 'Avg. Growth' },
-  { value: '100%', label: 'Founder-Led' },
-];
-
-const metricsData = {
-  revenue: { value: '$1.2M+', growth: '+180%', label: 'REVENUE IMPACT', desc: 'Direct sales generated for startup cohorts.' },
-  reach: { value: '45.8M', growth: '3.4x YoY', label: 'BRAND RESONANCE', desc: 'Combined organic content views across channels.' },
-  efficiency: { value: '92%', growth: '-40h/wk', desc: 'Saved through client onboarding automation.' },
-};
-
-const techPills = [
-  { name: 'React 19', color: '#C39BD3' },
-  { name: 'Automation', color: '#D49B85' },
-  { name: 'Serverless', color: '#ECC8B8' },
-  { name: 'Narrative Strategy', color: '#D49B85' },
-  { name: 'n8n Pipelines', color: '#C39BD3' },
-  { name: 'GTM Strategy', color: '#ECC8B8' },
-];
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Hero() {
-  const [activeMetric, setActiveMetric] = useState('revenue');
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-  const handleMouseMove = (e) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-    card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY;
+      const progress = Math.min(scrollPos / 150, 1);
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <section
@@ -41,7 +24,7 @@ export default function Hero() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '110vh',
+        minHeight: '100vh',
         overflow: 'hidden',
         paddingTop: '140px',
         paddingBottom: '100px',
@@ -152,7 +135,7 @@ export default function Hero() {
         >
           <span className="text-gradient">Start Smart</span>
           <br />
-          <span className="text-serif-italic" style={{ fontWeight: 300, color: 'var(--text-secondary)' }}>by SE</span>
+          <span className="text-serif-italic" style={{ fontWeight: 300, color: 'var(--text-secondary)', display: 'inline-block', marginTop: '12px' }}>by SE</span>
         </motion.h1>
 
         {/* Sub-tagline */}
@@ -176,7 +159,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '64px' }}
+          style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '0' }}
         >
           <a href="#contact" className="btn primary-btn">
             Book Discovery Call
@@ -188,192 +171,17 @@ export default function Hero() {
             Learn About Us
           </a>
         </motion.div>
-
-        {/* ── INTERACTIVE BENTO SHOWCASE ────────────────── */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          onMouseMove={handleMouseMove}
-          className="glass-card"
-          style={{
-            width: '100%',
-            maxWidth: '920px',
-            margin: '0 auto 64px auto',
-            padding: '32px',
-            textAlign: 'left',
-            position: 'relative',
-            border: '1px solid rgba(var(--accent-violet-rgb), 0.22)',
-            overflow: 'hidden',
-          }}
-        >
-          <div className="card-glow" />
-
-          {/* Header row */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(var(--accent-violet-rgb), 0.12)', paddingBottom: '18px', marginBottom: '24px' }}>
-            <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'var(--accent-violet)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-              System Terminal // Active Cohorts Preview
-            </span>
-            <div style={{ display: 'flex', gap: '6px' }}>
-              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#EF4444', opacity: 0.7 }} />
-              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#F59E0B', opacity: 0.7 }} />
-              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10B981', opacity: 0.7 }} />
-            </div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '28px' }}>
-            {/* Column 1: Live pipelines */}
-            <div>
-              <h4 style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '14px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                Active Pipelines
-              </h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {[
-                  { name: 'Core Narrative Pillars', status: 'Deployed', time: 'Just now' },
-                  { name: 'Marketing Automation CRM', status: 'Online', time: 'Active' },
-                  { name: 'React Landing Stack', status: 'Optimized', time: '0.8s load' },
-                ].map((pipeline, i) => (
-                  <div key={i} style={{ padding: '12px 16px', borderRadius: '8px', background: 'rgba(var(--accent-violet-rgb), 0.03)', border: '1px solid rgba(var(--accent-violet-rgb), 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div>
-                      <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>{pipeline.name}</div>
-                      <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '2px' }}>{pipeline.time}</div>
-                    </div>
-                    <span style={{ fontSize: '0.65rem', fontWeight: 800, color: '#10B981', background: 'rgba(16, 185, 129, 0.08)', padding: '2px 8px', borderRadius: '4px', textTransform: 'uppercase' }}>
-                      {pipeline.status}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Column 2: Interactive metrics */}
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-              <div>
-                <h4 style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '14px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                  Interactive Indicators
-                </h4>
-                <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
-                  {Object.keys(metricsData).map((metric) => (
-                    <button
-                      key={metric}
-                      onClick={() => setActiveMetric(metric)}
-                      style={{
-                        padding: '6px 12px',
-                        fontSize: '0.75rem',
-                        fontWeight: 700,
-                        borderRadius: '6px',
-                        border: activeMetric === metric ? '1px solid var(--accent-violet)' : '1px solid rgba(var(--accent-violet-rgb), 0.15)',
-                        background: activeMetric === metric ? 'rgba(var(--accent-violet-rgb), 0.15)' : 'transparent',
-                        color: activeMetric === metric ? 'var(--text-primary)' : 'var(--text-secondary)',
-                        cursor: 'pointer',
-                        transition: 'all 0.25s ease',
-                      }}
-                    >
-                      {metric.toUpperCase()}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div style={{ background: 'rgba(var(--accent-violet-rgb), 0.03)', border: '1px solid rgba(var(--accent-violet-rgb), 0.08)', borderRadius: '10px', padding: '20px', minHeight: '120px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeMetric}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 10 }}
-                    transition={{ duration: 0.25 }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px' }}>
-                      <span style={{ fontSize: '2rem', fontWeight: 900, background: 'var(--gradient-primary)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                        {metricsData[activeMetric].value}
-                      </span>
-                      <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#10B981' }}>
-                        {metricsData[activeMetric].growth}
-                      </span>
-                    </div>
-                    <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', margin: '6px 0 0 0', lineHeight: 1.4 }}>
-                      {metricsData[activeMetric].desc}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            </div>
-
-            {/* Column 3: Tech capabilities */}
-            <div>
-              <h4 style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '14px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                Capabilities Stack
-              </h4>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                {techPills.map((pill, i) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{ scale: 1.05, borderColor: pill.color }}
-                    style={{
-                      padding: '8px 12px',
-                      fontSize: '0.78rem',
-                      fontWeight: 600,
-                      borderRadius: '8px',
-                      background: 'rgba(var(--accent-violet-rgb), 0.02)',
-                      border: '1px solid rgba(var(--accent-violet-rgb), 0.12)',
-                      color: 'var(--text-primary)',
-                      cursor: 'default',
-                      transition: 'border-color 0.2s ease',
-                    }}
-                  >
-                    <span style={{ display: 'inline-block', width: '6px', height: '6px', borderRadius: '50%', background: pill.color, marginRight: '8px' }} />
-                    {pill.name}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Stats row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            display: 'flex', justifyContent: 'center', alignItems: 'center',
-            gap: '0', flexWrap: 'wrap',
-          }}
-        >
-          {stats.map((stat, i) => (
-            <React.Fragment key={stat.label}>
-              <div style={{
-                display: 'flex', flexDirection: 'column', alignItems: 'center',
-                padding: '0 40px',
-                borderLeft: i > 0 ? '1px solid rgba(var(--accent-violet-rgb), 0.2)' : 'none',
-              }}>
-                <span style={{
-                  fontFamily: 'var(--font-heading)', fontSize: '2.2rem', fontWeight: 800,
-                  background: 'var(--gradient-primary)',
-                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}>
-                  {stat.value}
-                </span>
-                <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '4px' }}>
-                  {stat.label}
-                </span>
-              </div>
-            </React.Fragment>
-          ))}
-        </motion.div>
       </div>
 
       {/* ── Scroll indicator ──────────────────────────── */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        animate={{ opacity: 1 - scrollProgress }}
         style={{
           position: 'absolute', bottom: '40px', left: '50%', transform: 'translateX(-50%)',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px',
+          display: scrollProgress >= 0.95 ? 'none' : 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px',
           zIndex: 10,
+          pointerEvents: 'none',
         }}
       >
         <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.15em' }}>Scroll</span>

@@ -52,7 +52,7 @@ export default function Footer() {
               <ul>
                 <li><a href="#contact">Consultation</a></li>
                 <li><a href="mailto:advisory@startsmart.com">Email Us</a></li>
-                <li><a href="#" className="disabled-link" onClick={(e) => e.preventDefault()}>LinkedIn</a></li>
+                <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               </ul>
             </div>
           </div>
@@ -64,9 +64,9 @@ export default function Footer() {
             &copy; 2026 Start Smart by SE. All rights reserved.
           </p>
           <div className="legal-links">
-            <a href="#" className="disabled-link" onClick={(e) => e.preventDefault()}>Privacy Policy</a>
+            <a href="#hero">Privacy Policy</a>
             <span>•</span>
-            <a href="#" className="disabled-link" onClick={(e) => e.preventDefault()}>Terms of Service</a>
+            <a href="#hero">Terms of Service</a>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ export default function Founder() {
   ];
 
   return (
-    <section className="about-founder-section" id="about-founder" style={{ minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
+    <section className="about-founder-section light-section" id="about-founder" style={{ paddingTop: '160px', paddingBottom: '120px', display: 'flex', alignItems: 'center' }}>
       <div className="section-container">
         <div className="founder-layout">
           {/* Left Side: Visual Representation of Founder */}

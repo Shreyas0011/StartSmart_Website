@@ -33,6 +33,8 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
     {
       id: 'offer-social-media',
       bgClass: 'blue-bg',
+      accentColor: 'var(--accent-blue)',
+      glowColor: 'rgba(56, 189, 248, 0.2)',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
@@ -50,6 +52,8 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
     {
       id: 'offer-web-dev',
       bgClass: 'purple-bg',
+      accentColor: 'var(--accent-violet)',
+      glowColor: 'rgba(192, 132, 252, 0.2)',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
@@ -69,6 +73,8 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
     {
       id: 'offer-automation',
       bgClass: 'emerald-bg',
+      accentColor: 'var(--accent-emerald)',
+      glowColor: 'rgba(52, 211, 153, 0.2)',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="3" />
@@ -87,6 +93,8 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
     {
       id: 'offer-coaching',
       bgClass: 'amber-bg',
+      accentColor: 'var(--accent-amber)',
+      glowColor: 'rgba(251, 146, 60, 0.2)',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -106,6 +114,8 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
     {
       id: 'offer-gtm',
       bgClass: 'rose-bg',
+      accentColor: 'var(--accent-copper)',
+      glowColor: 'rgba(212, 155, 133, 0.2)',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10" />
@@ -126,6 +136,8 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
     {
       id: 'offer-sales',
       bgClass: 'cyan-bg',
+      accentColor: 'var(--accent-blue)',
+      glowColor: 'rgba(56, 189, 248, 0.2)',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <line x1="18" y1="20" x2="18" y2="10" />
@@ -192,9 +204,12 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
                 padding: '24px 30px',
                 minHeight: '90px',
                 cursor: 'pointer',
-                border: activeServiceId === offer.id ? '1px solid var(--accent-violet)' : 'var(--glass-border)',
-                boxShadow: activeServiceId === offer.id ? '0 15px 30px rgba(var(--accent-violet-rgb), 0.18), var(--glass-shadow)' : 'var(--glass-shadow)',
-                background: activeServiceId === offer.id ? 'var(--bg-active-tab)' : 'var(--bg-dark-card)'
+                border: activeServiceId === offer.id ? `1px solid ${offer.accentColor}` : 'var(--glass-border)',
+                boxShadow: activeServiceId === offer.id ? `0 15px 30px color-mix(in srgb, ${offer.accentColor} 12%, transparent), var(--glass-shadow)` : 'var(--glass-shadow)',
+                background: activeServiceId === offer.id ? `color-mix(in srgb, ${offer.accentColor} 6%, transparent)` : 'var(--bg-dark-card)',
+                '--glow-color': offer.glowColor,
+                '--glow-border': offer.accentColor,
+                '--glow-shadow': `color-mix(in srgb, ${offer.accentColor} 8%, transparent)`
               }}
             >
               <div className="card-glow"></div>
@@ -224,9 +239,12 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
                 className="glass-card"
                 style={{
                   padding: '35px',
-                  border: '1px solid rgba(var(--accent-violet-rgb), 0.35)',
+                  border: `1px solid color-mix(in srgb, ${selectedOffer.accentColor} 35%, transparent)`,
                   background: 'var(--bg-deliverables-card)',
-                  boxShadow: 'var(--glass-shadow)'
+                  boxShadow: 'var(--glass-shadow)',
+                  '--glow-color': selectedOffer.glowColor,
+                  '--glow-border': selectedOffer.accentColor,
+                  '--glow-shadow': `color-mix(in srgb, ${selectedOffer.accentColor} 8%, transparent)`
                 }}
               >
                 <div className="card-glow"></div>
@@ -239,24 +257,24 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
                     <h3 style={{ fontSize: '1.65rem', fontWeight: 800, margin: 0, color: 'var(--text-primary)' }}>
                       {selectedOffer.title}
                     </h3>
-                    <p style={{ margin: '4px 0 0 0', color: 'var(--accent-violet)', fontSize: '0.88rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    <p style={{ margin: '4px 0 0 0', color: selectedOffer.accentColor, fontSize: '0.88rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                       Service Deliverables & Scope
                     </p>
                   </div>
                 </div>
-
+ 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', marginBottom: '28px' }}>
                   {selectedOffer.details.map((detail, idx) => {
                     const parts = detail.split(': ');
                     return (
                       <motion.div 
                         key={idx} 
-                        whileHover={{ y: -4, borderColor: 'var(--accent-violet)' }}
+                        whileHover={{ y: -4, borderColor: selectedOffer.accentColor }}
                         style={{ 
                           padding: '20px', 
                           borderRadius: '12px', 
-                          background: 'rgba(var(--accent-violet-rgb), 0.03)', 
-                          border: '1px solid rgba(var(--accent-violet-rgb), 0.15)',
+                          background: `color-mix(in srgb, ${selectedOffer.accentColor} 6%, transparent)`, 
+                          border: `1px solid color-mix(in srgb, ${selectedOffer.accentColor} 25%, transparent)`,
                           display: 'flex',
                           flexDirection: 'column',
                           gap: '6px',
@@ -265,7 +283,7 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
                       >
                         {parts.length > 1 ? (
                           <>
-                            <h5 style={{ color: 'var(--accent-violet)', fontWeight: 700, fontSize: '0.95rem', margin: 0 }}>
+                            <h5 style={{ color: selectedOffer.accentColor, fontWeight: 700, fontSize: '0.95rem', margin: 0 }}>
                               {parts[0]}
                             </h5>
                             <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', margin: 0, opacity: 0.9, lineHeight: 1.45 }}>
@@ -281,13 +299,13 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
                     );
                   })}
                 </div>
-
+ 
                 <div 
                   style={{ 
                     padding: '16px 24px', 
                     borderRadius: '10px', 
-                    background: 'rgba(var(--accent-violet-rgb), 0.08)', 
-                    border: '1px solid rgba(var(--accent-violet-rgb), 0.25)', 
+                    background: `color-mix(in srgb, ${selectedOffer.accentColor} 12%, transparent)`, 
+                    border: `1px solid color-mix(in srgb, ${selectedOffer.accentColor} 35%, transparent)`, 
                     fontSize: '0.92rem', 
                     color: 'var(--text-secondary)',
                     display: 'flex',
@@ -297,7 +315,7 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
                   }}
                 >
                   <span style={{ 
-                    background: 'var(--accent-violet)', 
+                    background: selectedOffer.accentColor, 
                     color: 'var(--bg-dark-obsidian)', 
                     padding: '4px 10px', 
                     borderRadius: '6px', 
