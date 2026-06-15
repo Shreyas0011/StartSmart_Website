@@ -34,8 +34,8 @@ export default function App() {
   // Initialize Lenis smooth scroll
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.4, // Time-based duration for smooth transitions
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth fast-out-slow-in velocity curve
+      duration: 0.9, // Snappier scroll response to avoid latency sensation
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -8 * t)), // Balanced quick-response velocity curve
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
