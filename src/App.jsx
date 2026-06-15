@@ -34,14 +34,12 @@ export default function App() {
   // Initialize Lenis smooth scroll
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.08, // Buttery smooth interpolation coefficient
+      duration: 1.4, // Time-based duration for smooth transitions
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth fast-out-slow-in velocity curve
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1.0,
-      touchMultiplier: 2.0,
-      syncTouch: true,
-      smoothTouch: true,
     });
 
     lenisRef.current = lenis;
