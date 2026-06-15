@@ -109,6 +109,7 @@ export default function App() {
       <div className="ambient-glow glow-4"></div>
 
       <Navbar 
+        currentHash={currentHash}
         activeServiceId={activeServiceId} 
         onSelectService={(id) => {
           setActiveServiceId(id);

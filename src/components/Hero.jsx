@@ -1,19 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function Hero() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPos = window.scrollY;
-      const progress = Math.min(scrollPos / 150, 1);
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const { scrollY } = useScroll();
+  const indicatorOpacity = useTransform(scrollY, [0, 150], [1, 0]);
+  const indicatorY = useTransform(scrollY, [0, 150], [0, 20]);
 
   return (
     <section
@@ -125,8 +116,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="hero-title"
           style={{
-            fontSize: 'clamp(2.8rem, 7.5vw, 5.5rem)',
+            fontSize: 'clamp(2.2rem, 7.5vw, 5.5rem)',
             fontWeight: 900,
             letterSpacing: '-0.04em',
             lineHeight: 1.05,
@@ -161,8 +153,8 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
           style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '0' }}
         >
-          <a href="#contact" className="btn primary-btn">
-            Book Discovery Call
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shriram.hr@seenterprises.in" target="_blank" rel="noopener noreferrer" className="btn primary-btn">
+            Contact Us
             <svg className="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
             </svg>
@@ -175,11 +167,12 @@ export default function Hero() {
 
       {/* ── Scroll indicator ──────────────────────────── */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 - scrollProgress }}
+        className="hero-scroll-indicator"
         style={{
-          position: 'absolute', bottom: '40px', left: '50%', transform: 'translateX(-50%)',
-          display: scrollProgress >= 0.95 ? 'none' : 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px',
+          position: 'absolute', bottom: '40px', left: '50%', x: '-50%',
+          opacity: indicatorOpacity,
+          y: indicatorY,
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px',
           zIndex: 10,
           pointerEvents: 'none',
         }}

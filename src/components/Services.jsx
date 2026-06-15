@@ -185,7 +185,7 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
           viewport={{ once: true, margin: '-80px' }}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
             gap: '30px'
           }}
         >
@@ -236,9 +236,8 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="glass-card"
+                className="glass-card service-details-card"
                 style={{
-                  padding: '35px',
                   border: `1px solid color-mix(in srgb, ${selectedOffer.accentColor} 35%, transparent)`,
                   background: 'var(--bg-deliverables-card)',
                   boxShadow: 'var(--glass-shadow)',
@@ -263,7 +262,7 @@ export default function Services({ activeServiceId, setActiveServiceId }) {
                   </div>
                 </div>
  
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', marginBottom: '28px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '20px', marginBottom: '28px' }}>
                   {selectedOffer.details.map((detail, idx) => {
                     const parts = detail.split(': ');
                     return (

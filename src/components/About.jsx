@@ -102,7 +102,7 @@ export default function About() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginTop: '16px' }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '24px', marginTop: '16px' }}
         >
           {pillars.map((pillar) => (
             <motion.div
@@ -187,17 +187,10 @@ export default function About() {
               <motion.div
                 key={idx}
                 variants={cardVariants}
-                className="glass-card"
+                className="glass-card methodology-card"
                 onMouseMove={handleMouseMove}
                 whileHover={{ x: 8, borderColor: step.accentColor }}
                 style={{
-                  padding: '32px 40px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '24px',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  transition: 'border-color 0.3s ease',
                   '--glow-color': `color-mix(in srgb, ${step.accentColor} 15%, transparent)`,
                   '--glow-border': step.accentColor,
                   '--glow-shadow': `color-mix(in srgb, ${step.accentColor} 8%, transparent)`

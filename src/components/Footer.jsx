@@ -50,8 +50,8 @@ export default function Footer() {
             <div className="footer-column">
               <h4>Connect</h4>
               <ul>
-                <li><a href="#contact">Consultation</a></li>
-                <li><a href="mailto:advisory@startsmart.com">Email Us</a></li>
+                <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=shriram.hr@seenterprises.in" target="_blank" rel="noopener noreferrer">Consultation</a></li>
+                <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=shriram.hr@seenterprises.in" target="_blank" rel="noopener noreferrer">Email Us</a></li>
                 <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               </ul>
             </div>

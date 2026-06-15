@@ -10,7 +10,7 @@
     --bg-dark-obsidian: #0B0813;
     --bg-dark-card: rgba(26, 21, 39, 0.45);
     --bg-navbar: rgba(11, 8, 19, 0.75);
-    --bg-navbar-scrolled: rgba(21, 16, 32, 0.92);
+    --bg-navbar-scrolled: rgba(11, 8, 19, 0.98);
     --bg-dropdown: rgba(17, 13, 26, 0.98);
     --bg-active-tab: rgba(192, 132, 252, 0.08);
     --bg-deliverables-card: linear-gradient(135deg, rgba(26, 21, 39, 0.75), rgba(212, 155, 133, 0.04));
@@ -74,6 +74,16 @@ body {
     min-height: 100vh;
     line-height: 1.6;
     background: linear-gradient(180deg, #0B0813 0%, #150F24 50%, #1F1735 100%);
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
 }
 
 /* --- Typography System --- */
@@ -1409,12 +1419,17 @@ body::after {
         display: flex;
     }
     
+    .navbar-container {
+        top: 12px;
+        padding: 0 16px;
+    }
+    
     .nav-links {
         position: fixed;
-        top: 80px;
-        left: 24px;
-        right: 24px;
-        background: rgba(10, 10, 18, 0.95);
+        top: 70px;
+        left: 16px;
+        right: 16px;
+        background: rgba(11, 8, 19, 0.98) !important;
         border: var(--glass-border);
         backdrop-filter: var(--glass-blur);
         -webkit-backdrop-filter: var(--glass-blur);
@@ -1431,6 +1446,7 @@ body::after {
         pointer-events: none;
         max-height: calc(100vh - 120px);
         overflow-y: auto;
+        z-index: 1050 !important;
     }
     
     .nav-links.active {
@@ -1462,10 +1478,13 @@ body::after {
         transform: none;
         width: 100%;
         box-shadow: none;
-        background: rgba(255, 255, 255, 0.02);
+        background: rgba(255, 255, 255, 0.03) !important;
         border: none;
+        border-left: 2px solid var(--accent-violet) !important;
+        border-radius: 0 12px 12px 0 !important;
         backdrop-filter: none;
         padding: 0;
+        padding-left: 12px !important;
         margin-top: 8px;
         margin-bottom: 8px;
         gap: 2px;
@@ -1968,4 +1987,159 @@ html.lenis body {
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
+
+
+/* --- Advanced Mobile & Tablet Responsiveness Enhancements --- */
+
+/* Prevent horizontal scroll on mobile platforms */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Fluid spacing and margins for the Hero section */
+#hero {
+    min-height: 100vh !important;
+    padding-top: 140px !important;
+    padding-bottom: 100px !important;
+}
+
+@media (max-width: 768px) {
+    #hero {
+        padding-top: 110px !important;
+        padding-bottom: 70px !important;
+        min-height: calc(100vh - 40px) !important;
+    }
+    #hero h1 {
+        margin-bottom: 16px !important;
+    }
+    #hero p {
+        margin-bottom: 28px !important;
+    }
+}
+
+/* Glass Card & Service Details Padding Overrides */
+.service-details-card {
+    padding: 35px;
+}
+
+@media (max-width: 768px) {
+    .glass-card {
+        padding: 24px !important;
+    }
+    .service-details-card {
+        padding: 24px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .glass-card {
+        padding: 20px !important;
+    }
+    .service-details-card {
+        padding: 20px !important;
+    }
+    .glass-navbar {
+        padding: 8px 16px !important;
+    }
+}
+
+/* Service Card Padding Override */
+@media (max-width: 640px) {
+    .service-card {
+        padding: 16px 20px !important;
+        min-height: auto !important;
+    }
+}
+
+/* Methodology Card Layout (Stacks on Mobile) */
+.methodology-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 32px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+@media (max-width: 768px) {
+    .methodology-card {
+        padding: 24px 28px;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .methodology-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 12px;
+    }
+    .methodology-card div[style*="paddingRight"] {
+        padding-right: 0 !important;
+    }
+    .methodology-card svg {
+        align-self: flex-end;
+        margin-top: 4px;
+    }
+}
+
+/* Section Header Margins */
+@media (max-width: 768px) {
+    .section-header {
+        margin-bottom: 36px !important;
+    }
+}
+
+/* Founder Details Layout & Stats wrapping */
+.founder-credentials {
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+@media (max-width: 768px) {
+    .about-founder-section {
+        padding-top: 110px !important;
+        padding-bottom: 70px !important;
+    }
+    .founder-credentials {
+        gap: 24px;
+    }
+}
+
+@media (max-width: 520px) {
+    .founder-credentials {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* Footer Links Grid organization on mobile */
+@media (max-width: 600px) {
+    .footer-links-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px !important;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .footer-links-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+}
+
+/* Hide scroll indicator on touch/mobile devices */
+@media (max-width: 1024px) {
+    .hero-scroll-indicator {
+        display: none !important;
+    }
+}
+
 

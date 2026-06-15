@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Navbar({ activeServiceId, onSelectService }) {
+export default function Navbar({ currentHash, activeServiceId, onSelectService }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -20,20 +20,23 @@ export default function Navbar({ activeServiceId, onSelectService }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Hash listener to highlight About Founder link when on founder page
+  // Update active section based on route/hash changes
   useEffect(() => {
-    const handleHash = () => {
-      if (window.location.hash === '#/founder') {
-        setActiveSection('about-founder');
-      }
-    };
-    window.addEventListener('hashchange', handleHash);
-    handleHash(); // Run initially
-    return () => window.removeEventListener('hashchange', handleHash);
-  }, []);
+    if (currentHash === '#/founder') {
+      setActiveSection('about-founder');
+    } else if (currentHash.startsWith('#') && !currentHash.startsWith('#/')) {
+      const sectionId = currentHash.replace('#', '');
+      setActiveSection(sectionId);
+    }
+  }, [currentHash]);
 
-  // Intersection Observer for Active Section Highlighting
+  // Intersection Observer for Active Section Highlighting on scroll
   useEffect(() => {
+    if (currentHash === '#/founder') {
+      setActiveSection('about-founder');
+      return;
+    }
+
     const sections = document.querySelectorAll('section[id], .service-card');
     const observerOptions = {
       root: null,
@@ -42,7 +45,6 @@ export default function Navbar({ activeServiceId, onSelectService }) {
     };
 
     const observerCallback = (entries) => {
-      // Do not override highlight if on founder route page
       if (window.location.hash === '#/founder') return;
       
       entries.forEach((entry) => {
@@ -65,7 +67,7 @@ export default function Navbar({ activeServiceId, onSelectService }) {
     return () => {
       sections.forEach((section) => observer.unobserve(section));
     };
-  }, []);
+  }, [currentHash]);
 
   const navLinks = [
     { name: 'About Us', href: '#about-us', id: 'about-us' },
@@ -271,8 +273,8 @@ export default function Navbar({ activeServiceId, onSelectService }) {
 
         {/* CTA Button */}
         <div className="nav-cta-wrapper">
-          <a href="#contact" className="cta-button glass-btn">
-            Book Discovery Call
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shriram.hr@seenterprises.in" target="_blank" rel="noopener noreferrer" className="cta-button glass-btn">
+            Contact Us
           </a>
         </div>
       </nav>
