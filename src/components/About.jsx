@@ -30,7 +30,7 @@ const pillars = [
     accentColor: 'var(--accent-blue)',
     title: 'Our Mission',
     tagline: 'Why we exist',
-    desc: 'To make strategic marketing and practical technology accessible to every founder — enabling small and local brands to compete and resonate globally while growing with integrity.',
+    desc: 'To make strategic marketing and practical technology accessible to every founder - enabling small and local brands to compete and resonate globally while growing with integrity.',
   },
   {
     id: 'pillar-vision',
@@ -43,7 +43,7 @@ const pillars = [
     accentColor: 'var(--accent-violet)',
     title: 'Our Vision',
     tagline: 'Where we\'re headed',
-    desc: 'A world where every authentic business — regardless of size — has the tools, strategy, and support to grow sustainably, create social impact, and build enduring customer relationships.',
+    desc: 'A world where every authentic business - regardless of size - has the tools, strategy, and support to grow sustainably, create social impact, and build enduring customer relationships.',
   },
   {
     id: 'pillar-philosophy',
@@ -56,7 +56,7 @@ const pillars = [
     accentColor: 'var(--accent-emerald)',
     title: 'Our Philosophy',
     tagline: 'How we operate',
-    desc: 'Growth should be organic, ethical, and founder-led. Instead of chasing vanity metrics, we focus on resonance — aligning marketing with what founders and their customers truly value.',
+    desc: 'Growth should be organic, ethical, and founder-led. Instead of chasing vanity metrics, we focus on resonance - aligning marketing with what founders and their customers truly value.',
   },
 ];
 
@@ -64,7 +64,7 @@ const creativeApproach = [
   { step: '01', title: 'Founder-First Discovery', desc: 'We start by understanding the founder\'s intent, values, and long-term goals before touching tactics.', accentColor: 'var(--accent-amber)' },
   { step: '02', title: 'Narrative-Led Strategy', desc: 'Brand stories and content that reflect authentic purpose and speak to the right audiences.', accentColor: 'var(--accent-blue)' },
   { step: '03', title: 'Automation with Empathy', desc: 'Deploy automation to simplify operations and scale outreach without losing human touch.', accentColor: 'var(--accent-violet)' },
-  { step: '04', title: 'Measurement for Growth', desc: 'Every initiative tied to clear KPIs — retention, engagement, conversions, and social impact metrics.', accentColor: 'var(--accent-emerald)' },
+  { step: '04', title: 'Measurement for Growth', desc: 'Every initiative tied to clear KPIs - retention, engagement, conversions, and social impact metrics.', accentColor: 'var(--accent-emerald)' },
   { step: '05', title: 'Iterative Collaboration', desc: 'We co-create with clients, iterate fast on learnings, and keep founders involved at every stage.', accentColor: 'var(--accent-copper)' },
 ];
 
@@ -92,7 +92,7 @@ export default function About() {
           <p className="section-desc" style={{ lineHeight: 1.8, fontSize: '1.08rem' }}>
             We are a results-driven marketing and technology studio that helps purposeful brands
             grow sustainably. Combining human-centered strategy with automation-first technology,
-            we create organic, meaningful impact — building long-term value rather than short-term spikes.
+            we create organic, meaningful impact - building long-term value rather than short-term spikes.
           </p>
         </motion.div>
 

@@ -1638,7 +1638,7 @@ body::after {
 
 
 /* =========================================================
-   PREMIUM ENHANCEMENT LAYER — UI Polish & Interactivity
+   PREMIUM ENHANCEMENT LAYER - UI Polish & Interactivity
    ========================================================= */
 
 /* Section separator gradient lines */
@@ -1671,7 +1671,7 @@ section {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Drop old glass-card definition – these take precedence after media queries */
+/* Drop old glass-card definition - these take precedence after media queries */
 
 /* What-we-offer section background treatment */
 .what-we-offer-section {
@@ -1762,7 +1762,7 @@ section {
     border-bottom: 1px solid rgba(var(--accent-violet-rgb), 0.1);
 }
 
-/* CTA Book button in navbar — shimmer on hover */
+/* CTA Book button in navbar - shimmer on hover */
 .cta-button {
     position: relative;
     overflow: hidden;

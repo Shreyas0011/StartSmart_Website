@@ -143,7 +143,7 @@ export default function Hero() {
             margin: '0 auto 40px auto',
           }}
         >
-          We build digital landmarks for purposeful founders — integrating narrative-driven marketing strategy with scalable serverless engineering.
+          We build digital landmarks for purposeful founders - integrating narrative-driven marketing strategy with scalable serverless engineering.
         </motion.p>
 
         {/* CTA buttons */}

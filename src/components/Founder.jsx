@@ -48,7 +48,7 @@ export default function Founder() {
               Shriram founded the company in 2024 with a clear mission: democratize access to quality marketing and technology for small and local brands. Rooted in experience across GTM, digital strategy, and product-led growth, Shriram’s leadership blends strategic discipline with an empathetic client-first approach.
             </p>
             <p className="founder-bio">
-              He works closely with every client to understand what “resonates” for them—the core belief or problem that inspired their product or service—and builds tailored, outcome-focused solutions that scale. Under his guidance, the team ensures services are affordable, transparent, and designed for lasting impact.
+              He works closely with every client to understand what “resonates” for them - the core belief or problem that inspired their product or service - and builds tailored, outcome-focused solutions that scale. Under his guidance, the team ensures services are affordable, transparent, and designed for lasting impact.
             </p>
 
             {/* Blockquote Quote */}
@@ -65,7 +65,7 @@ export default function Founder() {
               <p>
                 “Growth should be organic, ethical, and founder led. We align marketing and technology pipelines with what founders and customers truly value.”
               </p>
-              <cite>— Shriram HR, Founder</cite>
+              <cite>- Shriram HR, Founder</cite>
             </motion.blockquote>
 
             {/* Credentials Row */}
